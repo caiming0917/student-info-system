@@ -1,0 +1,13 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: center-service
+eureka:
+  instance:
+    hostname: center-server
+  client:
+    fetch-registry: false
+    register-with-eureka: false
+#    service-url:
+#      defaultZone: http://eureka02:8762/eureka

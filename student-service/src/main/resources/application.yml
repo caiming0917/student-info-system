@@ -1,0 +1,21 @@
+server:
+  port: 8123
+  servlet:
+    context-path: /user-service
+
+spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/study
+    username: postgres
+    password: root
+
+    driver-class-name: org.postgresql.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      maximum-pool-size: 15
+      minimum-idle: 5
+      idle-timeout: 30000
