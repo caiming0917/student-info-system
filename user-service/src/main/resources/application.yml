@@ -9,7 +9,8 @@ spring:
 
   mvc:
     pathmatch:
-      matching-strategy: ant_path_matcher
+      # 配置策略
+      matching-strategy: ant-path-matcher
 
   datasource:
     url: jdbc:postgresql://localhost:5432/study
@@ -30,4 +31,4 @@ eureka:
   client:
     service-url:
       defaultZone: http://center-server:8080/eureka
-    register-with-eureka: true
+    register-with-eureka: false
