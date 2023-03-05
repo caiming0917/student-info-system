@@ -9,6 +9,9 @@ import java.io.Serializable;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * @author cai juan
+ */
 @Data
 public class UserRegisterRequest implements Serializable {
 

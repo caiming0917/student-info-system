@@ -15,4 +15,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
 public interface UserService extends IService<User> {
 
     long userRegister(UserRegisterRequest registerRequest);
+
+    boolean logout(long id);
+
+    String login(String account, String password, boolean rememberMe);
 }

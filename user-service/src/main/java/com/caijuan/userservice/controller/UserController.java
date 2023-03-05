@@ -10,9 +10,12 @@ import com.caijuan.userservice.entity.User;
 import com.caijuan.userservice.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
@@ -28,6 +31,7 @@ import java.util.List;
 @RequestMapping("/user")
 public class UserController {
 
+    @Resource
     private UserService userService;
 
     @PostMapping("/register")
@@ -59,5 +63,21 @@ public class UserController {
     public BaseResponse<Boolean> deleteUser(@RequestBody long id) {
         boolean b = userService.removeById(id);
         return ResultUtils.success(b);
+    }
+
+    @PutMapping("/logout")
+    public BaseResponse<Boolean> logout(@RequestBody long id){
+        boolean b = userService.logout(id);
+        return ResultUtils.success(b);
+    }
+
+    @PutMapping("/login")
+    public BaseResponse<String> login(HttpServletRequest request, HttpServletResponse response){
+        String account = request.getHeader("account");
+        String password = request.getHeader("password");
+        String rememberMe = request.getHeader("rememberMe");
+        String token = userService.login(account, password, Boolean.parseBoolean(rememberMe));
+        response.setHeader("token", "token");
+        return ResultUtils.success("success");
     }
 }
